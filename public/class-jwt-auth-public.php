@@ -141,10 +141,13 @@ class Jwt_Auth_Public {
 		/** If the authentication fails return an error*/
 		if ( is_wp_error( $user ) ) {
 			$error_code = $user->get_error_code();
+			$jwt_auth_code = "[jwt_auth] $error_code";
+
+			$error_message = apply_filters('jwt_auth_error_message', $user, $jwt_auth_code) ?? $user->get_error_messages($error_code);
 
 			return new WP_Error(
-				'[jwt_auth] ' . $error_code,
-				$user->get_error_message( $error_code ),
+				$jwt_auth_code,
+				$error_message,
 				[
 					'status' => 403,
 				]
