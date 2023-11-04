@@ -1,7 +1,9 @@
 .vscode
 .DS_Store
+.idea
 includes/vendor/bin
 includes/vendor/dealerdirect
 includes/vendor/squizlabs
 includes/vendor/wp-coding-standards
 admin/ui/node_modules
+**/._*
